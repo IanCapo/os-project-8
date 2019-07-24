@@ -77,15 +77,25 @@
 	Store.prototype.save = function (updateData, callback, id) {
 		var data = JSON.parse(localStorage[this._dbName]);
 		var todos = data.todos;
-
+		// console.log('param id', id, 'param updateData', updateData)
 		callback = callback || function () { };
+		var newId = '';
 
-		// Generate an ID
-		var newId = "";
-		var charset = "0123456789";
+		// Generate an ID; check if ID already exists
+		function generateNewID() {
+			var charset = "0123456789";
+			let someId = ''
+			let idExists = todos.find(item => item.id === someId)
 
-		for (var i = 0; i < 6; i++) {
-			newId += charset.charAt(Math.floor(Math.random() * charset.length));
+			for (var i = 0; i < 6; i++) {
+				someId += charset.charAt(Math.floor(Math.random() * charset.length));
+			}
+			if (idExists) {
+				console.log('id exists')
+				generateNewID()
+			} else {
+				newId = parseInt(someId)
+			}
 		}
 
 		// If an ID was actually given, find the item and update each property
@@ -102,10 +112,9 @@
 			localStorage[this._dbName] = JSON.stringify(data);
 			callback.call(this, todos);
 		} else {
-
-			// Assign an ID
-			updateData.id = parseInt(newId);
-
+			// Assign an ID to the new item
+			generateNewID()
+			updateData.id = newId;
 
 			todos.push(updateData);
 			localStorage[this._dbName] = JSON.stringify(data);
