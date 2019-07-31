@@ -11,7 +11,7 @@
 	 * real life you probably would be making AJAX calls
 	 */
 	function Store(name, callback) {
-		callback = callback || function () {};
+		callback = callback || function () { };
 
 		this._dbName = name;
 
@@ -62,7 +62,7 @@
 	 * @param {function} callback The callback to fire upon retrieving data
 	 */
 	Store.prototype.findAll = function (callback) {
-		callback = callback || function () {};
+		callback = callback || function () { };
 		callback.call(this, JSON.parse(localStorage[this._dbName]).todos);
 	};
 
@@ -77,15 +77,26 @@
 	Store.prototype.save = function (updateData, callback, id) {
 		var data = JSON.parse(localStorage[this._dbName]);
 		var todos = data.todos;
+		// console.log('param id', id, 'param updateData', updateData)
+		callback = callback || function () { };
+		var newId = '';
 
-		callback = callback || function () {};
+		// Generate an ID; check if ID already exists
+		function generateNewID() {
+			var charset = "0123456789";
+			let someId = ''
+			let idExists = todos.find(item => item.id === someId)
 
-		// Generate an ID
-	    var newId = ""; 
-	    var charset = "0123456789";
-
-        for (var i = 0; i < 6; i++) {
-     		newId += charset.charAt(Math.floor(Math.random() * charset.length));
+			for (var i = 0; i < 6; i++) {
+				someId += charset.charAt(Math.floor(Math.random() * charset.length));
+			}
+			if (idExists) {
+				console.log('id exists')
+				generateNewID()
+				// break out in case the ids are all already assigned to avoid crash?
+			} else {
+				newId = parseInt(someId)
+			}
 		}
 
 		// If an ID was actually given, find the item and update each property
@@ -102,10 +113,9 @@
 			localStorage[this._dbName] = JSON.stringify(data);
 			callback.call(this, todos);
 		} else {
-
-    		// Assign an ID
-			updateData.id = parseInt(newId);
-    
+			// Assign an ID to the new item
+			generateNewID()
+			updateData.id = newId;
 
 			todos.push(updateData);
 			localStorage[this._dbName] = JSON.stringify(data);
@@ -122,16 +132,21 @@
 	Store.prototype.remove = function (id, callback) {
 		var data = JSON.parse(localStorage[this._dbName]);
 		var todos = data.todos;
-		var todoId;
-		
+
+		// the following lines of code are unnecessary as we do not need the var todoId, we
+		//can match the id param directly in the below for loop
+		/* var todoId;
+
 		for (var i = 0; i < todos.length; i++) {
 			if (todos[i].id == id) {
 				todoId = todos[i].id;
 			}
 		}
+		*/
 
 		for (var i = 0; i < todos.length; i++) {
-			if (todos[i].id == todoId) {
+			if (todos[i].id === id) {
+				// console.log('id = ', todos[i].id)
 				todos.splice(i, 1);
 			}
 		}
@@ -146,7 +161,7 @@
 	 * @param {function} callback The callback to fire after dropping the data
 	 */
 	Store.prototype.drop = function (callback) {
-		var data = {todos: []};
+		var data = { todos: [] };
 		localStorage[this._dbName] = JSON.stringify(data);
 		callback.call(this, data.todos);
 	};

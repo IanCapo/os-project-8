@@ -18,6 +18,7 @@
 	var todo = new Todo('todos-vanillajs');
 
 	function setView() {
+		// returns the part of the url after the #
 		todo.controller.setView(document.location.hash);
 	}
 	$on(window, 'load', setView);
