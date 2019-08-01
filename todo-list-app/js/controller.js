@@ -157,16 +157,17 @@
 	 */
 	Controller.prototype.removeItem = function (id) {
 		var self = this;
-		var items;
-		self.model.read(function (data) {
-			items = data;
-		});
+		// this can be commented out as it only serves the developer by logging out which item has been deleted
+		// var items;
+		// self.model.read(function (data) {
+		// 	items = data;
+		// });
 
-		items.forEach(function (item) {
-			if (item.id === id) {
-				console.log("Element with ID: " + id + " has been removed.");
-			}
-		});
+		// items.forEach(function (item) {
+		// 	if (item.id === id) {
+		// 		console.log("Element with ID: " + id + " has been removed.");
+		// 	}
+		// });
 
 		self.model.remove(id, function () {
 			self.view.render('removeItem', id);

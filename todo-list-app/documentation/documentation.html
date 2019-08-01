@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Documentation Project 8</title>
+  <link rel="stylesheet" href="documentation.css">
+
+</head>
+
+<body class="grid">
+  <header>
+    <h1>
+      Openclassrooms Project 8 ( Todo-List ) - Technical Documentation
+    </h1>
+  </header>
+  <div class="sidebar">
+    <div class="index">
+      <button id="product" class="list-item active">
+        Product information
+      </button>
+      <button id="technical" class="list-item">
+        Technial information
+      </button>
+      <button id="setup" class="list-item">
+        Getting startet
+      </button>
+      <button id="enhance" class="list-item">
+        Project enhancement
+      </button>
+      <button id="testing" class="list-item">
+        Testing
+      </button>
+      <button id="audit" class="list-item">
+        Competitors audit
+      </button>
+    </div>
+  </div>
+  <div class="main">
+    <div id="productContent" class="js-content">
+      <h2>Product information</h2>
+      <p>Todo List is a tool that helps you organise your life. <br> It is easy to use and does not require an internet
+        connection.
+      </p>
+      <h4>Features</h4>
+      <ul>
+        <li>Add todo</li>
+        <li>Edit todo</li>
+        <li>Delete todo</li>
+        <li>Mark a todo as completed </li>
+        <li>Toggle all todos as completed</li>
+        <li>Filter todos</li>
+        <li>Clear all completed todos </li>
+      </ul>
+      <h4>Adding a todo</h4>
+      <p>Click on the input field 'What needs to be done?' and enter the title of you new todo</p>
+      <h4>Editing a todo</h4>
+      <p>Double click on the title of the item you would like to edit </p>
+      <h4>Deleting a todo</h4>
+      <p>Hover over the title of the item you would like to edit, a close icon appear. By clicking on the icon the item
+        is deleted. </p>
+      <h4>Marging a todo as completed</h4>
+      <p>Click on the check symbol in the item field, the check symbol turns green and the todo is marked as completed.
+        is deleted. </p>
+      <h4>Toggling all todos to complete</h4>
+      <p>Click on the arrow in the input field, all items will be toggled as completed.
+        is deleted. </p>
+      <h4>Filtering todos</h4>
+      <p>Click on one of the buttons below the list, the list will update an only show items of the chosen category.
+      </p>
+      <h4>Clear all completed todos</h4>
+      <p>Click on one of the 'Clear completed' button below the list, all completed items will be deleted.
+        category.
+      </p>
+
+      <img src="./images/todolist.png" alt="todo-list">
+      <p>Copyright (c) Addy Osmani, Sindre Sorhus, Pascal Hartig, Stephen Sawchuk.</p>
+    </div>
+    <div id="technicalContent" class="js-content hidden">
+      <h2>Technical Information</h2>
+      <h4>Code base</h4>
+      <p>This application was built using HTML, CSS, JavaScript and the TodoMVC framework.</p>
+
+      <h4>The TodoMVC Framework</h4>
+      <p>
+        MVC stands for Mode-View-Controller and is an acrchitectural pattern thatdivides an application into 3
+        seperated entities. The Model component handles all data-related operations. The View component handles the
+        render-related tasks and includes elements the user interacts with. the Controller component is the interface
+        between Model and Controller component, it handles incoming requests, handles data via the Model component and
+        renders the final output using the View component.
+      </p>
+      <h4>Saving data</h4>
+      <p>
+        The users data is stored locally in the browsers local storage allowing the app to be used without active
+        internet connection.
+      </p>
+    </div>
+    <div id="setupContent" class="js-content hidden">
+      <h2>Set Up</h2>
+      <p>Simply download or clone the repository from my <a href="https://github.com/IanCapo/os-project-8"
+          target="_blank">github
+          repository</a> and open the index.html file in your preferred browser (chrome is recommended).</p>
+    </div>
+    <div id="enhanceContent" class="js-content hidden">
+      <h2>Project enhancement - finding bugs</h2>
+      <h4>AddItem not working</h4>
+      <p>Thanks to the Chrome Console I could easily spot a spelling error in the controller.js file on line 9:</p>
+      <div>
+        <img src="./images/Screenshot 2019-08-01 at 15.05.02.png" alt="">
+        <img src="./images/Screenshot 2019-08-01 at 15.06.35.png" alt="">
+      </div>
+      <h4>Duplicating of IDs</h4>
+      <p>In the store.js in Store.prototype.save on lines 83 - 89 and line 107 an ID for a new todo is
+        randomly
+        generated. Here I added function that checks whether the new ID has already been assigned to another item and if
+        so, generates a new ID.</p>
+      <div>
+        <div class="snippet">
+          <img src="./images/Screenshot 2019-08-01 at 15.09.29.png" alt="">
+          <img src="./images/Screenshot 2019-08-01 at 15.10.15.png" alt="">
+        </div>
+        <div class="snippet">
+          <img src="./images/Screenshot 2019-08-01 at 15.11.49.png" alt="">
+          <img src="./images/Screenshot 2019-08-01 at 15.14.08.png" alt="">
+        </div>
+      </div>
+      <h4>Refactor code from Store.prototype.removeItem</h4>
+      <p>In line 160 to 170 I commented out code that was only used to generate a console.log for the developer.</p>
+      <div>
+        <img src="./images/Screenshot 2019-08-01 at 15.28.53.png" alt="code snippet">
+      </div>
+      <h4>Comment out code without function in Store.prototype.removeItem</h4>
+      <p>In lines 136 to 144 a variable was assigned a value by looping through an array. My guess is, that this
+        variabel was inteded to be used in the adjacent for loop but was not needed. I commented it out. </p>
+      <div>
+        <div class="snippet">
+          <img src="./images/Screenshot 2019-08-01 at 15.18.15.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div id="testingContent" class="js-content hidden">
+      <h2>Testing</h2>
+      <p>The application has been developed using jasmine testing. It allows the developer to add tests to
+        functions in
+        order to ensure the code is written properly and that future enhancements do not implicate the existing
+        code.
+      </p>
+      <p>To run the test open the <a href="../jasmine-standalone-3.4.0/SpecRunner.html"
+          target="_blank">specRunner.html</a> in the
+        jasmine-standalone folder in your preferred browser.
+      </p>
+      <p>For detailed information on Jasmine checkout their documentation <a href="https://jasmine.github.io/"
+          target="_blank">here</a>.
+      </p>
+      <img class="fullwidth" src="./images/jasmine-testing.png" alt="jasmine test">
+    </div>
+    <div id="auditContent" class="js-content hidden">
+      <h2>Competitors performance</h2>
+      <p>I have analyzed the performance our biggest competitor <a href="http://todolistme.net" target="_blank">
+          todolistme.net</a></p>
+      <img src="./images/Screenshot 2019-08-01 at 16.03.57.png" alt="">
+      <p>Using the google chrome devtools and auditing the website these are the overall results:</p>
+      <img src="./images/Screenshot 2019-08-01 at 15.55.52.png" alt="">
+    </div>
+  </div>
+
+  <footer>
+    <p>Fabian Pasin, Aug. 2019</p>
+  </footer>
+  <script src="documentation.js"></script>
+</body>
+
+</html>
