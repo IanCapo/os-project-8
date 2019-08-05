@@ -59,11 +59,11 @@ describe('controller', function () {
 	});
 
 	it('should show entries on start-up', function () {
-		var todo = []; //when first opened the todo-array is empty
-		setUpModel([todo]); // sets up a todo-model
+		var todos = [{ title: 'todo 1', id: 42, completed: false }, { title: 'todo 2', id: 43, completed: false }]; //when first opened the todo-array is empty
+		setUpModel(todos); // sets up a todo-model
 
 		subject.setView(''); // sets the called path 
-		expect(view.render).toHaveBeenCalledWith('showEntries', [todo])
+		expect(view.render).toHaveBeenCalledWith('showEntries', todos)
 	});
 
 	describe('routing', function () {
@@ -153,18 +153,20 @@ describe('controller', function () {
 	});
 
 	it('should highlight "All" filter by default', function () {
-		// set up empty todo model, check if filter  is set without filter optiton
-		setUpModel([])
+		// set up todo model, check if filter  is set without filter optiton
+		var todos = [{ title: 'todo 1', id: 42, completed: true }, { title: 'todo 2', id: 43, completed: false }]
+		setUpModel(todos)
 		subject.setView('')
 		expect(view.render).toHaveBeenCalledWith('setFilter', '')
 	});
 
 	it('should highlight "Active" filter when switching to active view', function () {
-		// set up empty model, check if filter is set to active
+		// set up model, check if filter is set to active
+		var todos = [{ title: 'todo 1', id: 42, completed: true }, { title: 'todo 2', id: 43, completed: false }]
 		//check if anchor-node has class selected?
 
 		//	var element = document.querySelector("[href='#/active']")
-		setUpModel([])
+		setUpModel(todos)
 
 		subject.setView('#/active')
 
@@ -173,7 +175,7 @@ describe('controller', function () {
 	});
 
 	describe('toggle all', function () {
-		//before each test we set up a todo with status active which will then be toggld to completed: true
+		//before each test we set up a todo with status active which will then be toggled to completed: true
 		var todos;
 		beforeEach(function () {
 			todos = [{ title: 'my todo', completed: false, id: [] }]
@@ -196,8 +198,9 @@ describe('controller', function () {
 
 	describe('new todo', function () {
 		it('should add a new todo to the model', function () {
-			// setup an empty todo list array, set view to default, trigger new todo and check if called properly
-			setUpModel([])
+			// setup an todo list array, set view to default, trigger new todo and check if called properly
+			var todos = [{ title: 'todo 1', id: 42, completed: true }, { title: 'todo 2', id: 43, completed: false }]
+			setUpModel(todos)
 			subject.setView('')
 			view.trigger('newTodo', 'new todo')
 
@@ -242,12 +245,12 @@ describe('controller', function () {
 	describe('element removal', function () {
 		it('should remove an entry from the model', function () {
 			// set up model todo list, set view to default, trigger itemRemove, check if modele remove has been called with id and function
-			var todos = []
-			setUpModel([todos])
+			var todos = [{ title: 'todo 1', id: 42, completed: true }, { title: 'todo 2', id: 43, completed: false }]
+			setUpModel(todos)
 			subject.setView('')
-			view.trigger('itemRemove', { id: [] })
+			view.trigger('itemRemove', { id: 42 })
 
-			expect(model.remove).toHaveBeenCalledWith([], jasmine.any(Function))
+			expect(model.remove).toHaveBeenCalledWith(42, jasmine.any(Function))
 		});
 
 		it('should remove an entry from the view', function () {
