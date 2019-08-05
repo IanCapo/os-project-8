@@ -34,7 +34,10 @@
         Testing
       </button>
       <button id="audit" class="list-item">
-        Competitors audit
+        Our page performance
+      </button>
+      <button id="auditComp" class="list-item">
+        Competitors performance
       </button>
     </div>
   </div>
@@ -157,12 +160,120 @@
       <img class="fullwidth" src="./images/jasmine-testing.png" alt="jasmine test">
     </div>
     <div id="auditContent" class="js-content hidden">
+      <h2>Our page performance</h2>
+      <p>I have analyzed the performance of our website</a></p>
+      <img src="./images/Screenshot 2019-08-04 at 12.16.39.png" alt="todome screenshot">
+      <h4>Overall</h4>
+      <p>Using the google chrome devtools and auditing the website these are the overall results:</p>
+      <img src="./images/Screenshot 2019-08-05 at 06.29.33.png" alt="overall">
+      <h4>Performance</h4>
+      <img src="./images/Screenshot 2019-08-05 at 06.46.35.png" alt="performance">
+      <h5>Opportunities</h5>
+      <ul>
+        <li>Render-blockong elements: Elements should, if possible, be loaded at the bottom of the body in order not to
+          block the rendering of the
+          page.</li>
+      </ul>
+
+      <h4>Accessibility</h4>
+      <img src="./images/Screenshot 2019-08-05 at 06.47.59.png" alt="">
+      <h5>Opportunities</h5>
+      <ul>
+        <li>Contrast ratio between background and foreground colors: Text is hardly legible. </li>
+        <li>Add labels to form elements</li>
+      </ul>
+
+      <h4>Best Practices</h4>
+      <img src="./images/Screenshot 2019-08-05 at 06.49.11.png" alt="">
+      <h5>Opportunities</h5>
+      <ul>
+        <li>HTTPS: The page does not use a secure transfer protocol. This is important to protect users.</li>
+      </ul>
+
+      <h4>SEO</h4>
+      <img src="./images/Screenshot 2019-08-05 at 06.45.06.png" alt="">
+      <img src="./images/Screenshot 2019-08-05 at 06.43.39.png" alt="">
+      <h5>Opportunities</h5>
+      <ul>
+        <li>meta-tags: missing viewport meta-tag to ensure optimal display in mobile devices.</li>
+        <li>Legible font-sizes: Uses text smaller than 12px. (Application relevant texts are properly sized)</li>
+        <li>Target elements too small: Some clickable elements are too small which makes interaction witht the page
+          harder.</li>
+        <li>Page does not have a meta description. Meta description are displayed in search results and help users find
+          what they are looking for.</li>
+      </ul>
+    </div>
+    <div id="auditCompContent" class="js-content hidden">
       <h2>Competitors performance</h2>
       <p>I have analyzed the performance our biggest competitor <a href="http://todolistme.net" target="_blank">
           todolistme.net</a></p>
-      <img src="./images/Screenshot 2019-08-01 at 16.03.57.png" alt="">
+      <img src="./images/Screenshot 2019-08-01 at 16.03.57.png" alt="todome screenshot">
+      <h4>Overall</h4>
       <p>Using the google chrome devtools and auditing the website these are the overall results:</p>
-      <img src="./images/Screenshot 2019-08-01 at 15.55.52.png" alt="">
+      <img src="./images/Screenshot 2019-08-04 at 11.08.27.png" alt="overall">
+      <h4>Performance</h4>
+      <img src="./images/Screenshot 2019-08-04 at 11.07.12.png" alt="performance">
+      <h5>Opportunities</h5>
+      <ul>
+        <li>Next-gen formats: Images, especially icons, can be replaced with smaller image formats such as svg. Google
+          recommends
+          replacing
+          the background image with a next gen image such as webP or jpeg2000. When using those formats one needs to
+          make
+          sure that browser compatibility is given (e.g. safari does not support webP)</li>
+        <li>Render-blockong elements: Elements should, if possible, be loaded at the bottom of the body in order not to
+          block the rendering of the
+          page.</li>
+      </ul>
+      <img src="./images/Screenshot 2019-08-04 at 11.09.28.png" alt="performance opportunites">
+      <h5>Diagnostics</h5>
+      <ul>
+        <li>Font-display CSS feature: Ensures the display of text before the font is completely loaded and replaces a
+          standard font once the custom font is loaded.</li>
+        <li>Cache elements: Saves elements such as images and files temporarily in order to increase page laod when
+          revisiting the page. </li>
+      </ul>
+      <img src="./images/Screenshot 2019-08-04 at 11.29.49.png" alt="">
+
+      <h4>Accessibility</h4>
+      <ul>
+        <li>Contrast ratio between background and foreground colors: Text is hardly legible. </li>
+        <li>IDs of elements should be unique</li>
+        <li>Add titles to frame and iframe elements, add alt attributes to images to make it easier for visually
+          impaired people to navigate through the page.</li>
+        <li>Add a language attribute to the html-tag</li>
+      </ul>
+      <img src="./images/Screenshot 2019-08-04 at 11.36.39.png" alt="">
+
+      <h4>Best Practices</h4>
+      <ul>
+        <li>HTTPS: The page does not use a secure transfer protocol. This is important to protect users.</li>
+        <li>Avoid document.write()-method to make sure that even user with slow internet connections do not experience
+          page load delays.</li>
+        <li>Vulnerable third-party scripts: Todolistme uses an old version of jQuery. Always make sure to sue up-to-date
+          libraries without any vulnerabilities to
+          protect users.
+        </li>
+      </ul>
+      <img src="./images/Screenshot 2019-08-04 at 11.46.03.png" alt="">
+
+      <h4>SEO</h4>
+      <ul>
+        <li>meta-tags: missing viewport meta-tag to ensure optimal display in mobile devices.</li>
+        <li>Legible font-sizes: Uses text smaller than 12px. (Application relevant texts are properly sized)</li>
+        <li>Target elements too small: Some clickable elements are too small which makes interaction witht the page
+          harder.</li>
+      </ul>
+      <img src="./images/Screenshot 2019-08-04 at 11.53.47.png" alt="">
+
+      <h4>More potential for better performance and cleaner code </h4>
+      <ul>
+        <li>Inline-JavaScript: Todolistme loads several scripts in the body and also has inline scripts that should be
+          combined into one
+          js-file and then minified.</li>
+        <li>Although todolistme is working on dedicated mobile versions (android and ios) the web app is not repsonsive
+          which is very important these days.</li>
+      </ul>
     </div>
   </div>
 
