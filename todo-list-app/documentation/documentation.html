@@ -174,21 +174,41 @@
           block the rendering of the
           page.</li>
       </ul>
+      <h5>Solution</h5>
+      <ul>
+        <li>Render-blockong elements: I have moved less important css files to the bottom of the html body tag and
+          saved an estimated laod time of .72s</li>
+      </ul>
 
       <h4>Accessibility</h4>
       <img src="./images/Screenshot 2019-08-05 at 06.47.59.png" alt="">
       <h5>Opportunities</h5>
       <ul>
         <li>Contrast ratio between background and foreground colors: Text is hardly legible. </li>
-        <li>Add labels to form elements</li>
+        <li>Add labels to input element</li>
       </ul>
+      <h5>Solutions</h5>
+      <ul>
+        <li>Contrast ratio between background and foreground colors: I changed the font-color of the p tags in the
+          footer and changed the opacity of the h1 tag to .65 (before.15) </li>
+        <li>Add labels to input element: The style of the app does not allow, the placeholder attribute of the input is
+          used in place of a label.</li>
+      </ul>
+      <img src="./images/Screenshot 2019-08-05 at 07.34.26.png" alt="">
 
       <h4>Best Practices</h4>
       <img src="./images/Screenshot 2019-08-05 at 06.49.11.png" alt="">
       <h5>Opportunities</h5>
       <ul>
         <li>HTTPS: The page does not use a secure transfer protocol. This is important to protect users.</li>
+        <li>Error log in console: A file could not be found</li>
       </ul>
+      <h5>Solutions</h5>
+      <ul>
+        <li>HTTPS: The page is served locally.</li>
+        <li>Error log in console: Remove error from console</li>
+      </ul>
+      <img src="./images/Screenshot 2019-08-05 at 07.40.08.png" alt="">
 
       <h4>SEO</h4>
       <img src="./images/Screenshot 2019-08-05 at 06.45.06.png" alt="">
@@ -196,12 +216,23 @@
       <h5>Opportunities</h5>
       <ul>
         <li>meta-tags: missing viewport meta-tag to ensure optimal display in mobile devices.</li>
-        <li>Legible font-sizes: Uses text smaller than 12px. (Application relevant texts are properly sized)</li>
+        <li>Legible font-sizes: Uses text smaller than 12px.</li>
         <li>Target elements too small: Some clickable elements are too small which makes interaction witht the page
           harder.</li>
         <li>Page does not have a meta description. Meta description are displayed in search results and help users find
           what they are looking for.</li>
       </ul>
+      <h5>Solutions</h5>
+      <ul>
+        <li>meta-tags: Add viewport meta-tag</li>
+        <li>Legible font-sizes: Change font size in footer-section.</li>
+        <li>Target elements too small: Was fixes by adding viewport meta-tag.</li>
+        <li>Page does not have a meta description. Added meta description.</li>
+      </ul>
+      <img src="./images/Screenshot 2019-08-05 at 07.42.50.png" alt="">
+
+      <h4>Overall after applying the changes</h4>
+      <img src="./images/Screenshot 2019-08-05 at 07.48.24.png" alt="">
     </div>
     <div id="auditCompContent" class="js-content hidden">
       <h2>Competitors performance</h2>
