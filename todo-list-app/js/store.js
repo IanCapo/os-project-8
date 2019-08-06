@@ -93,77 +93,77 @@
 			if (idExists) {
 				console.log('id exists')
 				generateNewID()
-					} else {
-						newId = parseInt(someId)
-						
-							
-
-		
-							If an ID was actually given, find the item and update each property
-							(id) {
-						or (var i = 0; i < todos.length; i++) {
-						if (todos[i].id === id) {
-					for (var key in updateData) {
-								todos[i][key] = updateData[key];
-							}
-							break;
-						}
-					}
-					
-			localStorage[this._dbName] = JSON.stringify(data);
-					callback.call(this, todos);
-					 else {
-					// Assign an ID to the new item
-					generateNewID()
-					updateData.id = newId;
-
-					todos.push(updateData);
-			 	localStorage[this._dbName] = JSON.stringify(data);
-			 	callback.call(this, [updateData]);
-			 }
-			 ;
-			 
-			/**
-				* Will remove an item from the Store based on its ID
-				*
-	 * @param {number} id The ID of the item you want to remove
-				* @param {function} callback The callback to fire after saving
-				*/
-				tore.prototype.remove = function (id, callback) {
-				var data = JSON.parse(localStorage[this._dbName]);
-				var todos = data.todos;
-					
-						 the following lines of code are unnecessary as we do not need the var todoId, we
-					/can match the id param directly in the below for loop
-				/* var todoId;
-				
-		for (var i = 0; i < todos.length; i++) {
-					if (todos[i].id == id) {
-						todoId = todos[i].id;
-						
-						
-					/
-				
-		for (var i = 0; i < todos.length; i++) {
-					if (todos[i].id === id) {
-						// console.log('id = ', todos[i].id)
-						todos.splice(i, 1);
+			} else {
+				newId = parseInt(someId)
 			}
+		}
+
+
+		// If an ID was actually given, find the item and update each property
+		if (id) {
+			for (var i = 0; i < todos.length; i++) {
+				if (todos[i].id === id) {
+					for (var key in updateData) {
+						todos[i][key] = updateData[key];
+					}
+					break;
 				}
-			 
-			 localStorage[this._dbName] = JSON.stringify(data);
-			 callback.call(this, todos);
-			 ;
-			
-				**
-				* Will drop all storage and start fresh
-				*
-			 * @param {function} callback The callback to fire after dropping the data
+			}
+
+			localStorage[this._dbName] = JSON.stringify(data);
+			callback.call(this, todos);
+		} else {
+			// Assign an ID to the new item
+			generateNewID()
+			updateData.id = newId;
+
+			todos.push(updateData);
+			localStorage[this._dbName] = JSON.stringify(data);
+			callback.call(this, [updateData]);
+		}
+	};
+
+	/**
+	 * Will remove an item from the Store based on its ID
+	 *
+	 * @param {number} id The ID of the item you want to remove
+	 * @param {function} callback The callback to fire after saving
 	 */
-			Store.prototype.drop = function (callback) {
-				var data = { todos: [] };
-				localStorage[this._dbName] = JSON.stringify(data);
-				 callback.call(this, data.todos);
+	Store.prototype.remove = function (id, callback) {
+		var data = JSON.parse(localStorage[this._dbName]);
+		var todos = data.todos;
+
+		// the following lines of code are unnecessary as we do not need the var todoId, we
+		//can match the id param directly in the below for loop
+		/* var todoId;
+
+		for (var i = 0; i < todos.length; i++) {
+			if (todos[i].id == id) {
+				todoId = todos[i].id;
+			}
+		}
+		*/
+
+		for (var i = 0; i < todos.length; i++) {
+			if (todos[i].id === id) {
+				// console.log('id = ', todos[i].id)
+				todos.splice(i, 1);
+			}
+		}
+
+		localStorage[this._dbName] = JSON.stringify(data);
+		callback.call(this, todos);
+	};
+
+	/**
+	 * Will drop all storage and start fresh
+	 *
+	 * @param {function} callback The callback to fire after dropping the data
+	 */
+	Store.prototype.drop = function (callback) {
+		var data = { todos: [] };
+		localStorage[this._dbName] = JSON.stringify(data);
+		callback.call(this, data.todos);
 	};
 
 	// Export to window
