@@ -93,11 +93,11 @@
 			if (idExists) {
 				console.log('id exists')
 				generateNewID()
-				// break out in case the ids are all already assigned to avoid crash?
 			} else {
 				newId = parseInt(someId)
 			}
 		}
+
 
 		// If an ID was actually given, find the item and update each property
 		if (id) {

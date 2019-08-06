@@ -51,6 +51,7 @@ header {
   border-radius: 3px;
   outline: none;
 }
+
 .sidebar button:hover {
   cursor: pointer;
 }
@@ -107,4 +108,18 @@ footer {
 
 .list-item.active {
   background: lightblue;
+}
+
+.code-snippet {
+  background:#2f2c2c;
+  color: white;
+  padding: 4px 10px;
+  margin-top: 10px;
+  width: 400px;
+  border-radius: 2px;
+}
+
+img.tiny-image {
+  width: 150px;
+  margin: 0px 40px 10px 40px;
 }
