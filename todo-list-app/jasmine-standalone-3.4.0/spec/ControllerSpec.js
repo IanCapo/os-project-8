@@ -190,7 +190,6 @@ describe('controller', function () {
 		});
 
 		it('should update the view', function () {
-			// TODO: write test
 			expect(view.render).toHaveBeenCalledWith('updateElementCount', 1),
 				expect(view.render).toHaveBeenCalledWith('clearCompletedButton', { completed: 0, visible: false })
 		});
